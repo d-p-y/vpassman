@@ -1,0 +1,15 @@
+module main
+
+import libsodium_extensions as cmn
+import libsodium_extensions.aead.xchacha20poly1305_ietf as aeadmod
+import libsodium
+
+fn testsuite_begin() ! {
+	assert libsodium.sodium_init() >= 0
+}
+
+fn test_serializes_database_to_expected_format() {
+	println('#-#-# start #-#-# test_serializes_database_to_expected_format()')
+
+	assert "VPASSMANDB[V1]" == "not implemented yet"
+}

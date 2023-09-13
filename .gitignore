@@ -1,0 +1,9 @@
+main
+.idea
+.vscode/
+src-fullpath-of-pid/main.c
+cmake-build-debug
+*.tmp.c
+log
+*.bin
+temp

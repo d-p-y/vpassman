@@ -1,0 +1,38 @@
+name: run tests on ubuntu
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - "**.md"
+      - "**.yml"
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  in_docker:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get remove containerd.io
+        sudo apt-get install --quiet -y docker.io
+    - name: Run tests within docker
+      run: |
+        pwd
+        ./build-and-run-tests-within-docker-container.sh
+  in_podman:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get remove containerd.io
+        sudo apt-get install --quiet -y podman
+    - name: Run tests within podman
+      run: |
+        pwd
+        ./build-and-run-tests-within-podman-container.sh
